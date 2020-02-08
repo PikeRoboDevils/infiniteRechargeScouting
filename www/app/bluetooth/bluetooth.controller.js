@@ -12,8 +12,13 @@
     vm.devices = []; // the devices listed in the page
 
     vm.scan = scan;
+    vm.byPass = byPass;
     vm.connect = connect;
     vm.showSpinner = false;
+
+    function byPass (){
+      $state.go('welcome');
+    }
 
     function scan (){
       deviceSvc.reset();

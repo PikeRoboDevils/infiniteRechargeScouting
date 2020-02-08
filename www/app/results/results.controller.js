@@ -22,6 +22,7 @@
 		vm.device = deviceSvc.getDevice('scoutingDatabaseApp');
 
 		vm.powerCells = powerCells;
+		vm.controlPanel = controlPanel;
 		vm.total = total;
 		vm.climb = climb;
         vm.fouls = fouls;
@@ -34,11 +35,16 @@
 		$scope.progressbar.setColor('#387ef5');
 		// $scope.progressbar.setParent(document.querySelector('#progressBar'));
 
-		function cubes(){
+		function powerCells(){
 			vm.match.autoScore
 			return _.get(vm, "match.autoScore.powerCells", 0)
 				+ _.get(vm, "match.teleScore.powerCells", 0);
 				//+ _.get(vm, "match.teleScore.extraCubes", 0);
+		}
+
+		function controlPanel(){
+			vm.match.teleScore
+			return _.get(vm, "match.teleScore.controlPanel", 0);
 		}
 
 		function climb(){
@@ -46,7 +52,7 @@
 		} 
 
 		function total(){
-			return _.get(vm,"match.autoScore.total") + _.get(vm, "match.teleScore.total", 0);
+			return _.get(vm,"match.autoScore.total", 0) + _.get(vm, "match.teleScore.total", 0);
 		}
         
         function fouls() {

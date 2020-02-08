@@ -18,7 +18,6 @@
 		vm.submit = submit;
 
 		vm.matchParts	=	{
-			// switchCube: 0,
             powerCellsDropped: 0,
             bottomPort: 0,
             innerPort: 0,
@@ -26,38 +25,25 @@
             positionControl:false,
             rotationControl: false,
             stage1: false,
-            stage2: false,
-            stage3: false,
+            stage2: 0,
+            stage3: 0,
 
-			// scaleCube: 0,
-            total: 0,
-            // vaultPoints: 0,
-            // climbPoints: 0,
+            //total: 0,
+
             parking: 0,
-            // exchangeCube: 0,
-            // vaultCube: 0,
-            // outPortal: 0,
+
             levelPoints: 0,
-            // outExchange: 0,
+
             disabled: 0,
 			climbSuccess: false,
 			climbAttempt: false,
             
-			// climbPosition: {
-			// 		id: 0,
-			// 		label: 'None',
-			// 		value: 'NONE'
-			// 	},
 			playStyle: {
 				id: 1,
 				label: 'Offensive',
 				value: 'OFFENSIVE'
 				},
-            // powerUp: {
-            //     id: 2,
-            //     label: 'None',
-            //     value: 'NONE'
-            // },
+
 
             foul: {
             	id: 5,
@@ -66,7 +52,17 @@
             }
             
 			};
-
+			
+			// climbPosition: {
+			// 		id: 0,
+			// 		label: 'None',
+			// 		value: 'NONE'
+			// 	},
+   //          powerUp: {
+   //              id: 2,
+   //              label: 'None',
+   //              value: 'NONE'
+   //          },
 		// vm.climbPositions = [
 		// 	{
 		// 		id: 0,
@@ -124,144 +120,67 @@
 			}
 		];
 
-			vm.increaseBottomPort1 = increaseBottomPort1;
-			vm.decreaseBottomPort1 = decreaseBottomPort1;
+			 vm.increaseBottomPort1 = increaseBottomPort1;
+			 vm.decreaseBottomPort1 = decreaseBottomPort1;
 			vm.increaseOuterPort1 = increaseOuterPort1;
 			vm.decreaseOuterPort1 = decreaseOuterPort1;
 			vm.increaseInnerPort1 = increaseInnerPort1;
-			vm.decreaseInnerPort1 = decreaseinnerPort1;
-			vm.toggleRotationControl = toggleRotationControl;
-			vm.togglePositionControl = togglePositionControl;
-			vm.toggleStage1 = toggleStage1;
+			vm.decreaseInnerPort1 = decreaseInnerPort1;
 			vm.toggleStage2 = toggleStage2;
 			vm.toggleStage3 = toggleStage3;
-			// vm.increaseSwitchCube1 = increaseSwitchCube1;
-			// vm.decreaseSwitchCube1 = decreaseSwitchCube1;
-			// vm.increaseScaleCube1 = increaseScaleCube1;
-			// vm.decreaseScaleCube1 = decreaseScaleCube1;
 			vm.toggleclimbSuccess = toggleclimbSuccess;
             vm.decreasePowerCellsDropped1 = decreasePowerCellsDropped1;
             vm.increasePowerCellsDropped1 = increasePowerCellsDropped1;
-			// vm.increaseExchangeCube1 = increaseExchangeCube1;
-			// vm.decreaseExchangeCube1 = decreaseExchangeCube1;
-			// vm.increaseVaultCube1 = increaseVaultCube1;
-   //          vm.decreaseVaultCube1 = decreaseVaultCube1;
-   //          vm.increaseOutPortal1 = increaseOutPortal1;
-   //          vm.decreaseOutPortal1 = decreaseOutPortal1;
-   //          vm.increaseOutExchange1 = increaseOutExchange1;
-   //          vm.decreaseOutExchange1 = decreaseOutExchange1;
             vm.toggleClimbAttempt = toggleClimbAttempt;
             vm.toggleDisabled = toggleDisabled;
             vm.toggleLevelPoints = toggleLevelPoints;
             vm.didClimb = didClimb;
             vm.validClimbPos = validClimbPos;
-
+           
 			init();
 
 			function init() {
 				console.log(vm.match);
 			}
-			function decreasedBottomPort1() {
+			function decreaseBottomPort1() {
 				if (vm.matchParts.bottomPort - 1 >= 0) {
 					vm.matchParts.bottomPort -= 1;
 
 				}
 			}
-			function increasedBottomPort1() {
+			function increaseBottomPort1() {
 				vm.matchParts.bottomPort+= 1;
 			}
-			function decreasedInnerPort1() {
+			function decreaseInnerPort1() {
 				if (vm.matchParts.innerPort - 1 >= 0) {
 					vm.matchParts.innerPort -= 1;
 
 				}
 			}
-			function increasedInnerPort1() {
+			function increaseInnerPort1() {
 				vm.matchParts.innerPort+= 1;
 			}
-			function decreasedOuterPort1() {
+			function decreaseOuterPort1() {
 				if (vm.matchParts.outerPort - 1 >= 0) {
 					vm.matchParts.outerPort -= 1;
 
 				}
 			}
-			function increasedOuterPort1() {
+			function increaseOuterPort1() {
 				vm.matchParts.outerPort+= 1;
 			}
 
-			// function decreaseSwitchCube1() {
-			// 	if(vm.matchParts.switchCube - 1 >= 0) {
-			// 		vm.matchParts.switchCube -= 1;
-			// 	}
         
-            function decreasepowerCellsDropped1() {
+            function decreasePowerCellsDropped1() {
 				if(vm.matchParts.powerCellsDropped - 1 >= 0) {
 					vm.matchParts.powerCellsDropped -= 1;
 				}
 			}
         
-            function increasepowerCellsDropped1() {
+            function increasePowerCellsDropped1() {
 				vm.matchParts.powerCellsDropped += 1;
 			}
-        
 
-			// function increaseSwitchCube1() {
-			// 	vm.matchParts.switchCube += 1;
-			// }
-        
-        
-   //          function decreaseExchangeCube1() {
-			// 	if(vm.matchParts.exchangeCube - 1 >= 0) {
-			// 		vm.matchParts.exchangeCube -= 1;
-			// 	}
-			// }
-        
-   //          function increaseExchangeCube1() {
-			// 	vm.matchParts.exchangeCube += 1;
-			// }
-            
-   //      //makes sure that user can't exceed past 9 cubes delivered to the vault
-			// function increaseVaultCube1() {
-   //              if (vm.matchParts.vaultCube - 8 <= 0) {
-			// 	vm.matchParts.vaultCube += 1;
-   //              }
-			// }
-        
-   //          function decreaseVaultCube1() {
-			// 	if(vm.matchParts.vaultCube - 1 >= 0) {
-			// 		vm.matchParts.vaultCube -= 1;
-			// 	}
-			// }
-
-			// function decreaseScaleCube1() {
-			// 	if(vm.matchParts.scaleCube - 1 >= 0) {
-			// 		vm.matchParts.scaleCube -= 1;
-			// 	}
-			// }
-
-			// function increaseScaleCube1() {
-			// 	vm.matchParts.scaleCube += 1;
-			// }
-
-			// function increaseOutPortal1() {
-			// 	vm.matchParts.outPortal += 1;
-			// }
-
-			// function decreaseOutPortal1() {
-			// 	if(vm.matchParts.outPortal - 1 >= 0) {
-			// 		vm.matchParts.outPortal -= 1;
-			// 	}
-			// }
-
-			// function increaseOutExchange1() {
-			// 	vm.matchParts.outExchange += 1;
-			// }
-
-			// function decreaseOutExchange1() {
-			// 	if(vm.matchParts.outExchange - 1 >= 0) {
-			// 		vm.matchParts.outExchange -= 1;
-			// 	}
-			// }
 
             function hasClimbed(){
             	return vm.matchParts.climbSuccess;
@@ -291,19 +210,26 @@
 
 			function submit() {
 				var teleScore = {
-					// vaultPoints: vm.matchParts.vaultPoints,
+					
 					climbPoints: vm.matchParts.climbPoints,
-					total: vm.matchParts.total,
+					total: 0,
+					//controlPanel: 0,
 					parking: vm.matchParts.parking,
 					climbSuccess: vm.matchParts.climbSuccess,
 					climbAttempt: vm.matchParts.climbAttempt,
 					playStyle: vm.matchParts.playStyle.value,
                     foul: vm.matchParts.foul.value,
-                    breakdown: vm.matchParts.breakdown,
-                    bottomPortTotal: vm.matchProperties.bottomPort,
-					outerPortTotal: vm.matchProperties.outerPort,
-					innerPortTotal: vm.matchProperties.innerPort,
-                    dropped: vm.matchProperties.powerCellsDropped,
+                    disabled: vm.matchParts.disabled,
+                    bottomPortTotal: vm.matchParts.bottomPort,
+					outerPortTotal: vm.matchParts.outerPort,
+					innerPortTotal: vm.matchParts.innerPort,
+                    dropped: vm.matchParts.powerCellsDropped,
+
+                    level: vm.matchParts.levelPoints,
+                    rotationControlPoints: vm.matchParts.stage2,
+                    positionControlPoints: vm.matchParts.stage3,
+					
+					// vaultPoints: vm.matchParts.vaultPoints,
                     //powerUp: vm.matchParts.powerUp.value,
                     // switchCube: vm.matchParts.switchCube,
                     // scaleCube: vm.matchParts.scaleCube,
@@ -311,10 +237,6 @@
                     // vaultCube: vm.matchParts.vaultCube,
                     // outExchange: vm.matchParts.outExchange,
                     // outPortal: vm.matchParts.outPortal,
-                    level: vm.matchParts.levelPoints,
-                    rotationControlPoints: vm.matchParts.stage2,
-                    positionControlPoints: vm.matchParts.stage3,
-
 				};
 
                
@@ -326,11 +248,13 @@
                 
                 teleScore.level = vm.matchParts.levelPoints;
 
-				teleScore.total = teleScore.rotationControlPoints + telescore.positionControlPoints + teleScore.climbPoints + teleScore.parking + teleScore.level;
+                teleScore.controlPanel = teleScore.rotationControlPoints + teleScore.positionControlPoints;
+
+				teleScore.total = teleScore.climbPoints + teleScore.parking + teleScore.level; 
                 
                 teleScore.fouls = teleScore.foul;
                 
-                autoScore.powerCells = autoScore.bottomPortTotal + autoScore.outerPortTotal + autoScore.innerPortTotal - autoScore.dropped;
+                teleScore.powerCells = teleScore.bottomPortTotal + teleScore.outerPortTotal + teleScore.innerPortTotal - teleScore.dropped;
                // teleScore.cubes = (teleScore.switchCube + teleScore.scaleCube);
                 
                // teleScore.extraCubes = teleScore.exchangeCube + teleScore.vaultCube;
