@@ -21,7 +21,7 @@
 		vm.cancel = cancel;
 		vm.device = deviceSvc.getDevice('scoutingDatabaseApp');
 
-		vm.cubes = cubes;
+		vm.powerCells = powerCells;
 		vm.total = total;
 		vm.climb = climb;
         vm.fouls = fouls;
@@ -36,9 +36,9 @@
 
 		function cubes(){
 			vm.match.autoScore
-			return _.get(vm, "match.autoScore.cubes", 0)
-				+ _.get(vm, "match.teleScore.cubes", 0)
-				+ _.get(vm, "match.teleScore.extraCubes", 0);
+			return _.get(vm, "match.autoScore.powerCells", 0)
+				+ _.get(vm, "match.teleScore.powerCells", 0);
+				//+ _.get(vm, "match.teleScore.extraCubes", 0);
 		}
 
 		function climb(){

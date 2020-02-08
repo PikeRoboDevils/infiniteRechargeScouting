@@ -43,11 +43,11 @@
 			climbSuccess: false,
 			climbAttempt: false,
             
-			climbPosition: {
-					id: 0,
-					label: 'None',
-					value: 'NONE'
-				},
+			// climbPosition: {
+			// 		id: 0,
+			// 		label: 'None',
+			// 		value: 'NONE'
+			// 	},
 			playStyle: {
 				id: 1,
 				label: 'Offensive',
@@ -67,23 +67,23 @@
             
 			};
 
-		vm.climbPositions = [
-			{
-				id: 0,
-				label: 'None',
-				value: 'NONE'
-			},
-			{
-				id: 1,
-				label: 'Outside',
-				value: 'OUTSIDE'
-			},
-			{
-				id: 2,
-				label: 'Middle',
-				value: 'MIDDLE'
-			}
-		];
+		// vm.climbPositions = [
+		// 	{
+		// 		id: 0,
+		// 		label: 'None',
+		// 		value: 'NONE'
+		// 	},
+		// 	{
+		// 		id: 1,
+		// 		label: 'Outside',
+		// 		value: 'OUTSIDE'
+		// 	},
+		// 	{
+		// 		id: 2,
+		// 		label: 'Middle',
+		// 		value: 'MIDDLE'
+		// 	}
+		// ];
 		vm.playStyles = [
 			{
 				id: 1,
@@ -133,8 +133,8 @@
 			vm.toggleRotationControl = toggleRotationControl;
 			vm.togglePositionControl = togglePositionControl;
 			vm.toggleStage1 = toggleStage1;
-			vm.toggleStage1 = toggleStage2;
-			vm.toggleStage1 = toggleStage3;
+			vm.toggleStage2 = toggleStage2;
+			vm.toggleStage3 = toggleStage3;
 			// vm.increaseSwitchCube1 = increaseSwitchCube1;
 			// vm.decreaseSwitchCube1 = decreaseSwitchCube1;
 			// vm.increaseScaleCube1 = increaseScaleCube1;
@@ -311,7 +311,10 @@
                     // vaultCube: vm.matchParts.vaultCube,
                     // outExchange: vm.matchParts.outExchange,
                     // outPortal: vm.matchParts.outPortal,
-                    level: vm.matchParts.levelPoints
+                    level: vm.matchParts.levelPoints,
+                    rotationControlPoints: vm.matchParts.stage2,
+                    positionControlPoints: vm.matchParts.stage3,
+
 				};
 
                
@@ -323,11 +326,12 @@
                 
                 teleScore.level = vm.matchParts.levelPoints;
 
-				teleScore.total = teleScore.vaultPoints + teleScore.climbPoints + teleScore.parking + teleScore.levitation;
+				teleScore.total = teleScore.rotationControlPoints + telescore.positionControlPoints + teleScore.climbPoints + teleScore.parking + teleScore.level;
                 
                 teleScore.fouls = teleScore.foul;
                 
-                teleScore.cubes = (teleScore.switchCube + teleScore.scaleCube);
+                autoScore.powerCells = autoScore.bottomPortTotal + autoScore.outerPortTotal + autoScore.innerPortTotal - autoScore.dropped;
+               // teleScore.cubes = (teleScore.switchCube + teleScore.scaleCube);
                 
                // teleScore.extraCubes = teleScore.exchangeCube + teleScore.vaultCube;
                 
@@ -340,6 +344,14 @@
                // console.log(teleScore.total);
                // console.log("telescore vault points: " + teleScore.vaultPoints);
                 
+			}
+
+			function toggleStage2(){
+				vm.matchParts.stage2 = 10;
+			}
+
+			function toggleStage3(){
+				vm.matchParts.stage3 = 20;
 			}
 
 			function toggleclimbSuccess(){

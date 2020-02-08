@@ -21,11 +21,9 @@
 				bottomPort: 0,
 				outerPort: 0,
 				innerPort: 0,
-				// switch: 0,
 				powerCellsDropped: 0,
-				// scale: 0,
-    //             exchange: 0,
 				autoRun: false,
+
 				placement: {
 					id: 0,
 					label: 'None',
@@ -56,13 +54,6 @@
 				}
 			];
 
-			// vm.increaseSwitch1 = increaseSwitch1;
-			
-			// vm.decreaseSwitch1 = decreaseSwitch1;
-		
-			// vm.increaseScale1 = increaseScale1;
-			
-			// vm.decreaseScale1 = decreaseScale1;
 			vm.decreaseBottomPort1 = decreaseBottomPort1;
 			vm.increaseBottomPort1 = increaseBottomPort1;
 			vm.decreaseOuterPort1 = decreaseOuterPort1;
@@ -71,25 +62,14 @@
 			vm.increaseInnerPort1 = increaseInnerPort1;
 			vm.decreasePowerCellsDropped1 = decreasePowerCellsDropped1;
 			vm.increasePowerCellsDropped1 = increasePowerCellsDropped1;
-		
 			vm.toggleAutoRun = toggleAutoRun;
-           
-           
             vm.validStartingPos = validStartingPos;
-            // vm.increaseExchange1 = increaseExchange1;
-            // vm.decreaseExchange1 = decreaseExchange1;
 
             init();
 
 			function init() {
 				console.log(vm.match);
 			}
-
-			// function decreaseSwitch1() {
-			// 	if(vm.matchProperties.switch - 1 >= 0) {
-			// 		vm.matchProperties.switch -= 1;
-			// 	}
-			// }
 
 			function decreaseBottomPort1() {
 				if (vm.matchProperties.bottomPort - 1 >= 0) {
@@ -131,36 +111,6 @@
 				vm.matchProperties.powerCellsDropped += 1;
 			}
 
-
-			// function increaseSwitch1() {
-			// 	vm.matchProperties.switch += 1;
-			// }
-
-		
-
-			// function decreaseScale1() {
-			// 	if(vm.matchProperties.scale - 1 >= 0) {
-			// 		vm.matchProperties.scale -= 1;
-			// 	}
-			// }
-
-			
-
-			// function increaseScale1() {
-			// 	vm.matchProperties.scale += 1;
-			// }
-
-   //          function decreaseExchange1() {
-			// 	if(vm.matchProperties.exchange - 1 >= 0) {
-			// 		vm.matchProperties.exchange-= 1;
-			// 	}
-                
-                
-			// }
-   //          function increaseExchange1() {
-			// 	vm.matchProperties.exchange += 1;
-			// }
-
 			function validStartingPos() {
             	var answer = true;
             	if(vm.matchProperties.gears >= 1){
@@ -175,9 +125,6 @@
 
 			function submit() {
 				var autoScore = {
-					// switchPoints: vm.matchProperties.switch,
-					// scalePoints: vm.matchProperties.scale,
-					// exchangePoints: vm.matchProperties.exchange,
 					bottomPortTotal: vm.matchProperties.bottomPort,
 					outerPortTotal: vm.matchProperties.outerPort,
 					innerPortTotal: vm.matchProperties.innerPort,
@@ -192,7 +139,7 @@
 				autoScore.total = autoScore.autoRunPoints;
             
                 //autoScore.cubes = autoScore.switchPoints + autoScore.scalePoints + autoScore.exchangePoints + autoScore.dropped;
-                autoScore.powerCells = autoScore.bottomPortTotal + autoScore.outerPortTotal + autoScore.innerPortTotal  + autoScore.dropped;
+                autoScore.powerCells = autoScore.bottomPortTotal + autoScore.outerPortTotal + autoScore.innerPortTotal - autoScore.dropped;
 
 				vm.match.autoScore = autoScore;
 				MatchSvc.updateMatch(vm.match);
