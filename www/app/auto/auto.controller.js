@@ -139,8 +139,8 @@
 				autoScore.total = autoScore.autoRunPoints;
             
                 //autoScore.cubes = autoScore.switchPoints + autoScore.scalePoints + autoScore.exchangePoints + autoScore.dropped;
-                autoScore.powerCells = autoScore.bottomPortTotal + autoScore.outerPortTotal + autoScore.innerPortTotal - autoScore.dropped;
-
+                //autoScore.powerCells = autoScore.bottomPortTotal + autoScore.outerPortTotal + autoScore.innerPortTotal - autoScore.dropped;
+                autoScore.autoPowerCells = 2*autoScore.bottomPortTotal + 4*autoScore.outerPortTotal + 6*autoScore.innerPortTotal;
 				vm.match.autoScore = autoScore;
 				MatchSvc.updateMatch(vm.match);
 				$state.go('teleOp');

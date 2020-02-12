@@ -22,11 +22,8 @@
             bottomPort: 0,
             innerPort: 0,
             outerPort: 0,
-            positionControl:false,
-            rotationControl: false,
-            stage1: false,
-            stage2: 0,
-            stage3: 0,
+            positionControl: 0,
+            rotationControl: 0,
 
             //total: 0,
 
@@ -126,8 +123,8 @@
 			vm.decreaseOuterPort1 = decreaseOuterPort1;
 			vm.increaseInnerPort1 = increaseInnerPort1;
 			vm.decreaseInnerPort1 = decreaseInnerPort1;
-			vm.toggleStage2 = toggleStage2;
-			vm.toggleStage3 = toggleStage3;
+			vm.toggleRotationControl = toggleRotationControl;
+			vm.togglePositionControl = togglePositionControl;
 			vm.toggleclimbSuccess = toggleclimbSuccess;
             vm.decreasePowerCellsDropped1 = decreasePowerCellsDropped1;
             vm.increasePowerCellsDropped1 = increasePowerCellsDropped1;
@@ -226,8 +223,8 @@
                     dropped: vm.matchParts.powerCellsDropped,
 
                     level: vm.matchParts.levelPoints,
-                    rotationControlPoints: vm.matchParts.stage2,
-                    positionControlPoints: vm.matchParts.stage3,
+                    rotationControlPoints: vm.matchParts.rotationControl,
+                    positionControlPoints: vm.matchParts.positionControl,
 					
 					// vaultPoints: vm.matchParts.vaultPoints,
                     //powerUp: vm.matchParts.powerUp.value,
@@ -254,7 +251,8 @@
                 
                 teleScore.fouls = teleScore.foul;
                 
-                teleScore.powerCells = teleScore.bottomPortTotal + teleScore.outerPortTotal + teleScore.innerPortTotal - teleScore.dropped;
+                //teleScore.powerCells = teleScore.bottomPortTotal + teleScore.outerPortTotal + teleScore.innerPortTotal - teleScore.dropped;
+                teleScore.telePowerCells = teleScore.bottomPortTotal + 2*teleScore.outerPortTotal + 3*teleScore.innerPortTotal;
                // teleScore.cubes = (teleScore.switchCube + teleScore.scaleCube);
                 
                // teleScore.extraCubes = teleScore.exchangeCube + teleScore.vaultCube;
@@ -270,12 +268,12 @@
                 
 			}
 
-			function toggleStage2(){
-				vm.matchParts.stage2 = 10;
+			function toggleRotationControl(){
+				vm.matchParts.rotationControl = 10;
 			}
 
-			function toggleStage3(){
-				vm.matchParts.stage3 = 20;
+			function togglePositionControl(){
+				vm.matchParts.positionControl = 20;
 			}
 
 			function toggleclimbSuccess(){

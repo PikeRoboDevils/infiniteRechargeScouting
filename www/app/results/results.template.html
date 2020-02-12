@@ -17,14 +17,28 @@
   <div class="item item-icon-left">
 
     <i class="icon ion-flash"></i> 
-    Total Power Cells
-    <span class="badge badge-positive" ng-bind="resultsCtrl.powerCells()"></span>
+    Auto Power Cells
+    <span class="badge badge-positive" ng-bind="resultsCtrl.autoPowerCells()"></span>
   </div>
+
 <div class="item item-icon-left">
 
+    <i class="icon ion-flash"></i> 
+    TeleOp Power Cells
+    <span class="badge badge-positive" ng-bind="resultsCtrl.telePowerCells()"></span>
+  </div>
+
+<div class="item item-icon-left">
+
+    <i class="icon ion-flash"></i> 
+    Power Cells Dropped
+    <span class="badge badge-positive" ng-bind="resultsCtrl.dropped()"></span>
+  </div>
+
+<div class="item item-icon-left">
     <i class="icon ion-aperture"></i> 
     Control Panel
-    <span class="badge badge-positive" ng-bind="resultsCtrl.controlPanelTotal()"></span>
+    <span class="badge badge-positive" ng-bind="resultsCtrl.controlPanel()"></span>
   </div>
   <div class="item item-icon-left">
     <i class="icon ion-ios-gear-outline"></i>
@@ -38,12 +52,6 @@
     <span class="badge badge-balanced" ng-bind="resultsCtrl.fouls()"></span>
     </div>
 
- <!-- <div class="item item-icon-left">
-    <i class="icon ion-flag"></i>
-    Rotors
-    <span class="badge badge-balanced" ng-bind="resultsCtrl.rotor()"></span>
-  </div> -->
-        
    <div class="text-center padding">
      <button class="button button-positive" ng-click="resultsCtrl.submit()" ng-disabled="resultsCtrl.isSubmitting">
        <span ng-bind="resultsCtrl.buttonText"></span>

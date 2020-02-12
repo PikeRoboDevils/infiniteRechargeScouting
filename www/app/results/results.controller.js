@@ -21,7 +21,9 @@
 		vm.cancel = cancel;
 		vm.device = deviceSvc.getDevice('scoutingDatabaseApp');
 
-		vm.powerCells = powerCells;
+		vm.autoPowerCells = autoPowerCells;
+		vm.telePowerCells = telePowerCells;
+		vm.dropped = dropped;
 		vm.controlPanel = controlPanel;
 		vm.total = total;
 		vm.climb = climb;
@@ -35,15 +37,21 @@
 		$scope.progressbar.setColor('#387ef5');
 		// $scope.progressbar.setParent(document.querySelector('#progressBar'));
 
-		function powerCells(){
+		function autoPowerCells(){
 			vm.match.autoScore
-			return _.get(vm, "match.autoScore.powerCells", 0)
-				+ _.get(vm, "match.teleScore.powerCells", 0);
+			return _.get(vm, "match.autoScore.autoPowerCells", 0);
 				//+ _.get(vm, "match.teleScore.extraCubes", 0);
 		}
 
+		function telePowerCells(){
+			return _.get(vm, "match.teleScore.telePowerCells", 0);
+		}
+
+		function dropped(){
+			return _.get(vm, "match.autoScore.dropped", 0) + _.get(vm, "match.teleScore.dropped", 0);
+		}
+
 		function controlPanel(){
-			vm.match.teleScore
 			return _.get(vm, "match.teleScore.controlPanel", 0);
 		}
 
