@@ -68,7 +68,7 @@
              <li class="item item-toggle">
              Control Panel Rotation Control
              <label class="toggle toggle-energized">
-               <input type="checkbox" ng-model="teleOpCtrl.matchParts.rotationControl">
+               <input type="checkbox" ng-click="teleOpCtrl.toggleRotationControl()">
                <div class="track">
                  <div class="handle"></div>
                </div>
@@ -77,7 +77,7 @@
            <li class="item item-toggle">
              Control Panel Position Control
              <label class="toggle toggle-energized">
-               <input type="checkbox" ng-model="teleOpCtrl.matchParts.positionControl">
+               <input type="checkbox" ng-click="teleOpCtrl.togglePositionControl()">
                <div class="track">
                  <div class="handle"></div>
                </div>
@@ -132,7 +132,7 @@
             <li class="item item-toggle">
              Level
              <label class="toggle toggle-energized">
-               <input type="checkbox" ng-model="teleOpCtrl.matchParts.levelPoints">
+               <input type="checkbox" ng-click="teleOpCtrl.toggleLevelPoints()">
                <div class="track">
                  <div class="handle"></div>
                </div>
@@ -142,7 +142,7 @@
             <li class="item item-toggle">
              Parking
              <label class="toggle toggle-energized">
-               <input type="checkbox" ng-model="teleOpCtrl.matchParts.parking">
+               <input type="checkbox" ng-click="teleOpCtrl.toggleParking()">
                <div class="track">
                  <div class="handle"></div>
                </div>

@@ -22,6 +22,7 @@
             bottomPort: 0,
             innerPort: 0,
             outerPort: 0,
+
             positionControl: 0,
             rotationControl: 0,
 
@@ -34,6 +35,7 @@
             disabled: 0,
 			climbSuccess: false,
 			climbAttempt: false,
+			climbPoints: 0,
             
 			playStyle: {
 				id: 1,
@@ -49,7 +51,6 @@
             }
             
 			};
-			
 			// climbPosition: {
 			// 		id: 0,
 			// 		label: 'None',
@@ -129,6 +130,7 @@
             vm.decreasePowerCellsDropped1 = decreasePowerCellsDropped1;
             vm.increasePowerCellsDropped1 = increasePowerCellsDropped1;
             vm.toggleClimbAttempt = toggleClimbAttempt;
+            vm.toggleParking = toggleParking;
             vm.toggleDisabled = toggleDisabled;
             vm.toggleLevelPoints = toggleLevelPoints;
             vm.didClimb = didClimb;
@@ -178,6 +180,23 @@
 				vm.matchParts.powerCellsDropped += 1;
 			}
 
+			function toggleRotationControl(){
+				if(vm.matchParts.rotationControl == 0){
+					vm.matchParts.rotationControl = 10;
+				}
+				else {
+					vm.matchParts.rotationControl = 0;
+				}
+			}
+
+			function togglePositionControl(){
+				if (vm.matchParts.positionControl == 0){
+					vm.matchParts.positionControl = 20;
+				}
+				else {
+					vm.matchParts.positionControl = 0;
+				}
+			}
 
             function hasClimbed(){
             	return vm.matchParts.climbSuccess;
@@ -185,11 +204,12 @@
 
             function didClimb(){
             	if(!hasClimbed()) {
-            		vm.matchParts.climbPosition = {
-            			id: 0,
-					label: 'None',
-					value: 'NONE'
-				};
+            		climbPoints = 25;
+    //         		vm.matchParts.climbPosition = {
+    //         			id: 0,
+				// 	label: 'None',
+				// 	value: 'NONE'
+				// };
             	}
             }
 
@@ -209,7 +229,7 @@
 				var teleScore = {
 					
 					climbPoints: vm.matchParts.climbPoints,
-					total: 0,
+					//total: 0,
 					//controlPanel: 0,
 					parking: vm.matchParts.parking,
 					climbSuccess: vm.matchParts.climbSuccess,
@@ -241,18 +261,20 @@
                 
 				teleScore.climbPoints += vm.matchParts.climbSuccess ? MatchSvc.constants.CLIMB_CONSTANT : 0;
                 
-				teleScore.parking = (vm.matchParts.parking * MatchSvc.constants.TELE_PARKING_CONSTANT);
+				teleScore.parking = vm.matchParts.parking;
                 
                 teleScore.level = vm.matchParts.levelPoints;
 
                 teleScore.controlPanel = teleScore.rotationControlPoints + teleScore.positionControlPoints;
-
-				teleScore.total = teleScore.climbPoints + teleScore.parking + teleScore.level; 
+				
+				teleScore.telePowerCells = teleScore.bottomPortTotal + 2*teleScore.outerPortTotal + 3*teleScore.innerPortTotal;
+				
+				teleScore.total = teleScore.climbPoints + teleScore.parking + teleScore.level + teleScore.controlPanel + teleScore.telePowerCells; 
                 
                 teleScore.fouls = teleScore.foul;
                 
                 //teleScore.powerCells = teleScore.bottomPortTotal + teleScore.outerPortTotal + teleScore.innerPortTotal - teleScore.dropped;
-                teleScore.telePowerCells = teleScore.bottomPortTotal + 2*teleScore.outerPortTotal + 3*teleScore.innerPortTotal;
+                
                // teleScore.cubes = (teleScore.switchCube + teleScore.scaleCube);
                 
                // teleScore.extraCubes = teleScore.exchangeCube + teleScore.vaultCube;
@@ -264,16 +286,8 @@
                 console.log(vm.match.teleScore);
 				$state.go('results');
                // console.log(teleScore.total);
-               // console.log("telescore vault points: " + teleScore.vaultPoints);
+               // console.log("teleScore vault points: " + teleScore.vaultPoints);
                 
-			}
-
-			function toggleRotationControl(){
-				vm.matchParts.rotationControl = 10;
-			}
-
-			function togglePositionControl(){
-				vm.matchParts.positionControl = 20;
 			}
 
 			function toggleclimbSuccess(){
@@ -286,8 +300,21 @@
 			}
         
             function toggleLevelPoints(){
-                vm.matchParts.levelPoints = 15;
-                
+            	if (vm.matchParts.levelPoints == 0){
+            		vm.matchParts.levelPoints = 15;
+            	}
+            	else {
+            		vm.matchParts.levelPoints = 0;
+            	}
+            }
+
+            function toggleParking(){
+            	if (vm.matchParts.parking == 0){
+            		vm.matchParts.parking = 5;
+            	}
+            	else {
+            		vm.matchParts.parking = 0;
+            	}
             }
         
             function toggleDisabled(){

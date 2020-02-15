@@ -34,7 +34,7 @@
 				teamNumber = _.toString(vm.matchProperties.teamNumber),
                 scoutName = _.toString(vm.matchProperties.scoutName);
                 
-			return !((matchNumber.length >= 2) && (teamNumber.length >= 2) && (scoutName.length >= 3));
+			return !((matchNumber.length >= 1) && (teamNumber.length >= 1) && (scoutName.length >= 2));
 		}
 
 		function submit() {

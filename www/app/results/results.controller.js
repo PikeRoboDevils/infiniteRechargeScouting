@@ -56,7 +56,7 @@
 		}
 
 		function climb(){
-			return _.get(vm, "match.teleScore.climbPoints", 0);
+			return _.get(vm, "match.teleScore.climbPoints", 0)  + _.get(vm, "match.teleScore.level", 0) + _.get(vm, "match.teleScore.parking", 0);
 		} 
 
 		function total(){

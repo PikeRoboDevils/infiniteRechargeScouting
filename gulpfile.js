@@ -26,8 +26,12 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('watch', ['sass'], function() {
-  gulp.watch(paths.sass, ['sass']);
+gulp.task('default', gulp.series('sass'));
+
+gulp.task('ionic:watch:before', gulp.series('default'));
+
+gulp.task('watch', function() {
+  gulp.watch(paths.sass).on('change', gulp.series('sass'));
 });
 
 gulp.task('install', ['git-check'], function() {
