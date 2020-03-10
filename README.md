@@ -1,5 +1,9 @@
-# SteamWorksScouting
-Scouting app for the steamworks frc game. Our application is built using the Ionic framework version 1.
+# README #
+
+1018 Pike Robodevils Scouting App
+
+# InfiniteRechargeScoutingApp
+Scouting app for the infinite recharge frc game. Our application is built using the Ionic framework version 1.
 
 # Requirement 
 * Node/npm
@@ -8,7 +12,7 @@ Scouting app for the steamworks frc game. Our application is built using the Ion
 
 # Commands
 ## Initial Setup
-> npm install -g ionic cordova
+> npm install -g @ionic/cli
 
 ## Run
 > cd steamWorksScouting
