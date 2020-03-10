@@ -1,0 +1,24 @@
+name: 'Infinite Recharge Scouting App'
+shortName: Scouting App
+theme_version: 1.0.0
+domain: scouting_app
+scripts:
+  external:
+    - aos
+    - jarallax
+    - jquery
+    - flatpickr
+    - prismjs
+    - scrollmonitor
+    - smartwizard
+    - smooth-scroll
+  globals:
+    aos: aos
+    flatpickr: flatpickr
+    jarallax: jarallax
+    jquery: jQuery
+    prismjs: Prism
+    scrollmonitor: scrollMonitor
+    smooth-scroll: SmoothScroll
+minify_scripts: true
+subDomain: scouting_app
